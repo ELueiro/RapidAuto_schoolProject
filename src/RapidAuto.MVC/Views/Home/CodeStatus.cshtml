@@ -1,0 +1,23 @@
+﻿@model RapidAuto.MVC.Models.CodeStatusViewModel
+
+@{
+    ViewData["Title"] = "Code Status";
+}
+
+<h1>CodeStatus</h1>
+
+<div>
+    <h4>CodeStatusViewModel</h4>
+    <hr />
+
+    <h2 class="text-danger">Code HTTP: @Model.CodeStatus</h2>
+    <h2 class="text-danger"> @Model.MessageErreur</h2>
+
+    @if (Model.MontrerIdRequete)
+{
+    <h3>Request ID</h3>
+    <p>
+        <code>@Model.IdRequete</code>
+    </p>
+  }
+</div>

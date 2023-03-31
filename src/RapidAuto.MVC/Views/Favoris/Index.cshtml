@@ -1,0 +1,43 @@
+﻿@model IEnumerable<RapidAuto.MVC.Models.Vehicule>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Image1)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+             <td>
+                <img src="images/@item.Image1" width="50%" alt="Image 1 de voiture">
+            </td>     
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+           
+            <td>       
+                
+                @Html.ActionLink("Consulter les détails", "Details" , "Vehicules",  new {  id = item.Id } ) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

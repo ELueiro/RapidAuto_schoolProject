@@ -1,0 +1,74 @@
+﻿@model IEnumerable<RapidAuto.MVC.Models.Vehicule>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Rapid Auto</h1>
+
+<p>
+    <a asp-action="Create">Ajouter un véhicule</a>
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Trouver un Véhicule @Html.TextBox("recherche")  
+        <input type="submit" value="Chercher" /></p>
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        Filtrer Par Constructeur @Html.TextBox("filtre")  
+        <input type="submit" value="Filtrer" /></p>
+}
+<table class="table">
+    <thead>
+        <tr>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.Image1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Constructeur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modele)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnneeFabrication)
+            </th>
+            <th>
+                @Html.ActionLink("Prix", "Index", new { OrdreDeTri = ViewBag.PrixOrdreDeTriParm })
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {  
+        <tr>
+            <td>
+                <img src="images/@item.Image1" width="50%" alt="Image 1 de voiture">
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Constructeur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modele)
+            </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.AnneeFabrication)
+            </td>  
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.ActionLink("Modifier", "Edit", new {  id=item.Id  }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id  }) |
+                @Html.ActionLink("Supprimer", "Delete", new {  id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
